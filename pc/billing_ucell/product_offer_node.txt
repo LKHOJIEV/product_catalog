@@ -1,0 +1,178 @@
+CREATE(tline:Category{
+    name:"Doimiy",
+    id:"0a",
+    type:"Tariff Line"
+})
+
+CREATE(tp:BundledProductOffering{
+    isBundle: true,
+    code: "Doimiy 35",
+    name: "Doimiy 35",
+    externalId: "",
+    id: "4",
+    type: "Tariff Plan",
+    identificator: "db6a15c7-603f-4fd1-aea7-4e07b43dec23"
+})
+
+CREATE(ad:CHARACTERISTICTS{
+    definition: "BundleCharacteristicts",
+    definition_ru: "Преимущества тарифа",
+    definition_uz: "Tarifning afzalliklari",
+    definition_en: "Privileges under tariff terms",
+    rtpl_id: "4",
+    type: "advantages"
+})
+
+CREATE(dopt:CHARACTERISTICTS{
+    definition: "BundleCharacteristicts",
+    type: "daily_display_options",
+    rtpl_id: "4"
+})
+
+CREATE(tpar:CHARACTERISTICTS{
+    definition: "BundleCharacteristicts",
+    type: "tariff_params",
+    rtpl_id: "4"
+})
+
+
+CREATE(:ProductOffering{
+    isBundle: false,
+    code: "9202",
+    name: "Daily Doimiy 20 Full",
+    description: "Daily Doimiy 20 Full",
+    id: "ddo9202",
+    type: "Pack"
+})
+CREATE(:ProductOffering{
+    isBundle: false,
+    code: "9203",
+    name: "Daily Doimiy 20 Not full",
+    description: "Daily Doimiy 20 Not full",
+    id: "ddo9203",
+    type: "Pack"
+})
+CREATE(:ProductOffering{
+    isBundle: false,
+    code: "9204",
+    name: "Daily Doimiy 35 Full",
+    description: "Daily Doimiy 35 Full",
+    id: "ddo9204",
+    type: "Pack"
+})
+CREATE(:ProductOffering{
+    isBundle: false,
+    code: "9205",
+    name: "Daily Doimiy 35 Not full",
+    description: "Daily Doimiy 35 Not full",
+    id: "ddo9205",
+    type: "Pack"
+})
+CREATE(:ProductOffering{
+    isBundle: false,
+    code: "9206",
+    name: "Daily Doimiy 50 Full",
+    description: "Daily Doimiy 50 Full",
+    id: "ddo9206",
+    type: "Pack"
+})
+CREATE(:ProductOffering{
+    isBundle: false,
+    code: "9207",
+    name: "Daily Doimiy 50 Not full",
+    description: "Daily Doimiy 50 Not full",
+    id: "ddo9207",
+    type: "Pack"
+})
+CREATE(:ProductOffering{
+    isBundle: false,
+    code: "9208",
+    name: "Daily Doimiy 16 Full",
+    description: "Daily Doimiy 16 Full",
+    id: "ddo9208",
+    type: "Pack"
+})
+CREATE(:ProductOffering{
+    isBundle: false,
+    code: "9209",
+    name: "Daily Doimiy 16 Not Full",
+    description: "Daily Doimiy 16 Not Full",
+    id: "ddo9209",
+    type: "Pack"
+})
+
+
+CREATE(tcon:CHARACTERISTICTS{
+    definition: "BundleCharacteristicts",
+    type: "tariff_conditions",
+    rtpl_id: "4"
+})
+
+CREATE(cn:CHARACTERISTICTS{
+    definition: "BundleCharacteristicts",
+    type: "commercial_name",
+    rtpl_id: "4"
+})
+
+CREATE(ead:CHARACTERISTICTS{
+    definition: "BundleCharacteristicts",
+    type: "extra_advantages",
+    rtpl_id: "4"
+})
+
+CREATE(cc:CHARACTERISTICTS{
+    definition: "BundleCharacteristicts",
+    name:"BundleCharacteristicts",
+    type: "call_credit",
+    rtpl_id: "4"
+})
+
+CREATE(restr:CHARACTERISTICTS_DETAILS{
+    definition: "restart_service_id",
+    name: "Restart Doimiy 35",
+    id: "rest35",
+    value: 974})
+
+CREATE(:CHARACTERISTICTS_DETAILS{
+    volume: "45000",
+    definition: "Doimiy VOICE",
+    dcpl_id: "20021",
+    alias_definition: "мин.",
+    rtpl_id: "4",
+    priority: "90000",
+    discount_group: "4",
+    measure_unit: "Минута"
+})
+CREATE(:CHARACTERISTICTS_DETAILS{
+    volume: "1000",
+    definition: "Doimiy SMS",
+    dcpl_id: "20022",
+    alias_definition: "шт.",
+    rtpl_id: "4",
+    priority: "90000",
+    discount_group: "53",
+    measure_unit: "Штука"
+})
+CREATE(:CHARACTERISTICTS_DETAILS{
+    volume: "10240",
+    definition: "Общий интернет по ТП Doimiy",
+    dcpl_id: "20023",
+    alias_definition: "Мб.",
+    rtpl_id: "4",
+    priority: "90000",
+    discount_group: "103",
+    measure_unit: "Мегабайт"
+})
+
+CREATE(comn:CHARACTERISTICTS_DETAILS{
+  definition: "Doimiy 35",
+  definition_en:"Doimiy 35",
+  definition_uz:"Doimiy 35",
+  id: "cn35"
+})
+
+CREATE(price:CHARACTERISTICTS_DETAILS{
+  definition: "price",
+  value:35000,
+  id: "d35price"
+});

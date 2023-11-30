@@ -1,0 +1,9 @@
+//checking
+
+MATCH (n:CHARACTERISTICTS_DETAILS) 
+match (m:CHARACTERISTICTS)
+match (t:BundledProductOffering)
+match (m)-[c:HAS_CHARACTERISTICS]->(n)
+match (t)-[cc:HAS]->(m)
+RETURN n,m,t,cc;
+

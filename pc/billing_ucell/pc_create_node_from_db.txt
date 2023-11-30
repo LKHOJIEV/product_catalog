@@ -1,0 +1,168 @@
+
+begin
+	for rec in (select p.name_e,th.* from bis.trafic_histories th,bis.packs p where th.pack_pack_id >= 9203 and th.pack_pack_id <= 9209 and p.pack_id = th.pack_pack_id) loop
+				
+			dbms_output.put_line('CREATE(:CHARACTERISTICTS_DETAILS{
+  definition: "'||rec.name_e||'",
+	option_id:'||rec.pack_pack_id||',
+  value:'||rec.price_$||',
+  id: "chrd'||rec.pack_pack_id||'"
+});'); 
+	    
+	
+	end loop;
+end;	  
+
+
+
+begin
+	for rec in (select oev.obj_id,dp.dcpl_id,dp.def,dp.dcgr_dcgr_id,dp.priority,nvl(oevv.number_value,dph.clcr_volume) clcr_volume,dp.msrr_msrr_id,mm.def,mm.alias_def 
+from bis.discount_plans dp
+left join bis.discount_plan_histories dph on dph.dcpl_dcpl_id = dp.dcpl_id
+left join bis.measure_register mm on mm.msrr_id = dp.msrr_msrr_id
+left join bis.obj_in_groups oig on oig.group_id = 1203 and oig.obj_value = dp.dcpl_id
+left join bis.obj_extented_value oev on  oev.obj_value_id = oig.obj_id and oev.param_num = 5
+left join bis.obj_extented_value oevv 
+       on oevv.group_id = 1203 
+			and oevv.obj_id = oig.obj_id 
+			and oevv.param_num = 1 
+			and oev.group_id = 106 
+			and oevv.obj_value_id = dp.dcpl_id
+			and oevv.end_date > sysdate
+where 1=1
+and oev.obj_id = 17) loop
+	 dbms_output.put_line('CREATE(:CHARACTERISTICTS_DETAILS{
+    volume: "'||rec.clcr_volume||'",
+    definition: "'||rec.def||'",
+    dcpl_id: "'||rec.dcpl_id||'",
+    alias_definition: "'||rec.alias_def||'",
+    rtpl_id: "'||rec.rtpl_id||'",
+    priority: "'||rec.priority||'",
+    discount_group: "'||rec.dcgr_dcgr_id||'",
+    measure_unit: "'||rec.deff||'"
+});');	
+	
+	end loop;
+
+end;  
+
+
+begin
+	for rec in(
+select rp.name_e,p.pack_id,p.name_e pack_name
+from bis.packs p,bis.pack_rtpl pr,bis.rate_plans rp 
+where p.ptyp_ptyp_id = 296 
+and pr.pack_pack_id = p.pack_id
+and pr.del_date > sysdate
+and p.pack_id not in (5400)
+and p.expire_date > sysdate
+and p.duration_limit_date > sysdate
+and pr.rtpl_rtpl_id = rp.rtpl_id
+and (lower(rp.name_e) like '%sof%'
+or lower(rp.name_e) like '%doimiy%'
+or lower(rp.name_e) like '%cosmo%'
+or lower(rp.name_e) like '%for%')) loop
+
+dbms_output.put_line('
+CREATE(:CHARACTERISTICTS_DETAILS{
+    definition: "restart_service_id",
+    name: "Restart '||rec.name_e||'",
+    id: "chrd'||rec.pack_id||'",
+    value: '||rec.pack_id||'});');
+
+end loop;
+end;
+
+
+
+begin
+	for rec in (select p.* from bis.packs p where p.pack_id in (9202,
+9203,
+9204,
+9205,9206,
+9207,
+9208,
+9209)) loop
+
+dbms_output.put_line('CREATE(:ProductOffering{
+    isBundle: false,
+    code: "'||rec.pack_id||'",
+    name: "'||rec.name_e||'",
+    description: "'||rec.name_e||'",
+    id: "ddo'||rec.pack_id||'",
+    type: "Pack"
+});');
+
+end loop;
+end;
+/
+
+
+begin
+	for rec in (select * from bis.rate_plans rp where rp.name_e like '%COSMO%')loop
+	    dbms_output.put_line(
+			'(:BundledProductOffering{
+    isBundle: true,
+    code: "'||rec.name_e||'",
+    name: "'||rec.name_e||'",
+    externalId: "",
+    id: "'||rec.rtpl_id||'",
+    type: "Tariff Plan"
+}),
+');	
+	
+	end loop;
+end; 
+/
+
+
+select distinct
+       pc.rate_plan_id,
+       pc.remote_id,
+       pc.remote_name,
+       pc.renewal_price/100 as price,
+       pc.renewal_period,
+       jt_name.*,
+       jt_en.*,
+       jt_slogan.*,
+       jt_param.*
+  from bis.product_catalog pc,
+       json_table(pc.external_information,'$'columns(
+                       exinfo_en varchar2(500) path '$.en',
+                       exinfo_ru varchar2(500) path '$.ru',
+                       exinfo_uz varchar2(500) path '$.uz')) jt_en,
+       json_table(pc.name,'$'columns(
+                       name_en varchar2(500) path '$.en',
+                       name_ru varchar2(500) path '$.ru',
+                       name_uz varchar2(500) path '$.uz')) jt_name,
+       json_table(pc.slogan,'$'columns(
+                       slogan_en varchar2(500) path '$.en',
+                       slogan_ru varchar2(500) path '$.ru',
+                       slogan_uz varchar2(500) path '$.uz')) jt_slogan,
+       json_table(pc.parameters,'$'columns(
+                       pag varchar2(500) path '$.pag',
+                       unchangeable varchar2(500) path '$.unchangeable',
+                       daily_service_ids varchar2(500) path '$.daily_service_ids',
+                       restart_service_id varchar2(500) path '$.restart_service_id')) jt_param                                        
+ where pc.remote_id = '4';
+/
+
+
+ 
+select pc.rate_plan_id,
+       pc.remote_id,
+       pc.remote_package_id as discount_group,
+       pc.amount as volume,
+			 jt_meta.isUnlimited,
+       pc.traffic_type,
+       pc.weight_2,
+       jt_n2.*
+  from bis.product_catalog pc,
+       json_table(pc.name_2,'$'columns(
+                       n2_en varchar2(500) path '$.en',
+                       n2_ru varchar2(500) path '$.ru',
+                       n2_uz varchar2(500) path '$.uz')) jt_n2,
+       json_table(pc.meta,'$'columns(
+                       isUnlimited varchar2(500) path '$.isUnlimited')) jt_meta
+ where pc.remote_id = '4'; 									 							 
+/
