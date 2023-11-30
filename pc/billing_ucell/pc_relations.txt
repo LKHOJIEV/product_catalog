@@ -71,16 +71,9 @@ match (dps10:CHARACTERISTICTS_DETAILS{ id: "dps10"})
 match (vps10:CHARACTERISTICTS_DETAILS{ id: "vps10"}) 
 match (sps10:CHARACTERISTICTS_DETAILS{ id: "sps10"}) 
 
-match (dopt20nf:CHARACTERISTICTS_DETAILS{ id: "chrd9203"})
-match (dopt35f:CHARACTERISTICTS_DETAILS{ id: "chrd9204"})
-match (dopt35nf:CHARACTERISTICTS_DETAILS{ id: "chrd9205"})
-match (dopt50f:CHARACTERISTICTS_DETAILS{ id: "chrd9206"})
-match (dopt50nf:CHARACTERISTICTS_DETAILS{ id: "chrd9207"})
-match (dopt16f:CHARACTERISTICTS_DETAILS{ id: "chrd9208"})
-match (dopt16nf:CHARACTERISTICTS_DETAILS{ id: "chrd9209"})
+
 
 match (ad:CHARACTERISTICTS{rtpl_id:"4",type:"advantages"})//
-match (dopt:CHARACTERISTICTS{rtpl_id:"4",type:"daily_display_options"})//
 match (tpar:CHARACTERISTICTS{rtpl_id:"4",type:"tariff_params"})//
 match (tcon:CHARACTERISTICTS{rtpl_id:"4",type:"tariff_conditions"})//
 match (ead:CHARACTERISTICTS{rtpl_id:"4",type:"extra_advantages"})//
@@ -101,13 +94,7 @@ match (tpar)-[tparisRestTrue:HAS_CHARACTERISTICS]->(isRestTrue)
 match (tpar)-[tparchargepmon:HAS_CHARACTERISTICS]->(chargepmon) 
 match (tpar)-[tparisATrue:HAS_CHARACTERISTICS]->(isATrue) 
 match (tpar)-[tparunchTalse:HAS_CHARACTERISTICS]->(unchTalse) 
-match (dopt)-[doptdopt20nf:HAS_CHARACTERISTICS]->(dopt20nf)
-match (dopt)-[doptdopt35f:HAS_CHARACTERISTICS]->(dopt35f)
-match (dopt)-[doptdopt35nf:HAS_CHARACTERISTICS]->(dopt35nf)
-match (dopt)-[doptdopt50f:HAS_CHARACTERISTICS]->(dopt50f)
-match (dopt)-[doptdopt50nf:HAS_CHARACTERISTICS]->(dopt50nf)
-match (dopt)-[doptdopt16f:HAS_CHARACTERISTICS]->(dopt16f)
-match (dopt)-[doptdopt16nf:HAS_CHARACTERISTICS]->(dopt16nf)
+
 
 //create (tcon)-[tcondoc:HAS_CHARACTERISTICS]->(doc) 
 //create (ad)-[adfullem:HAS_CHARACTERISTICS]->(fullem) 
@@ -125,6 +112,29 @@ match (dopt)-[doptdopt16nf:HAS_CHARACTERISTICS]->(dopt16nf)
 //create (tpar)-[tparchargepmon:HAS_CHARACTERISTICS]->(chargepmon) 
 //create (tpar)-[tparisATrue:HAS_CHARACTERISTICS]->(isATrue) 
 //create (tpar)-[tparunchTalse:HAS_CHARACTERISTICS]->(unchTalse) 
+
+
+RETURN doc,pag,isRestTrue,isAFalse,isATrue,unchTrue,unchTalse,unld,unlc,mored,actzero,fullem,whocl,dleave,chargepmon,dps50,vps50,sps50,dps25,sps25,dps10,vps10,sps10,tcondoc,adfullem,adwhocl,adunld,admored,adactzero,addleave,adunlc,eaddps50,eadvps50,eadsps50,tparpag,tparisRestTrue,tparchargepmon,tparisATrue,tparunchTalse
+
+
+match (dopt:CHARACTERISTICTS{rtpl_id:"4",type:"daily_display_options"})
+
+match (dopt20nf:CHARACTERISTICTS_DETAILS{ id: "ddo9203"})
+match (dopt35f:CHARACTERISTICTS_DETAILS{ id: "ddo9204"})
+match (dopt35nf:CHARACTERISTICTS_DETAILS{ id: "ddo9205"})
+match (dopt50f:CHARACTERISTICTS_DETAILS{ id: "ddo9206"})
+match (dopt50nf:CHARACTERISTICTS_DETAILS{ id: "ddo9207"})
+match (dopt16f:CHARACTERISTICTS_DETAILS{ id: "ddo9208"})
+match (dopt16nf:CHARACTERISTICTS_DETAILS{ id: "ddo9209"})
+
+match (dopt)-[doptdopt20nf:HAS_CHARACTERISTICS]->(dopt20nf)
+match (dopt)-[doptdopt35f:HAS_CHARACTERISTICS]->(dopt35f)
+match (dopt)-[doptdopt35nf:HAS_CHARACTERISTICS]->(dopt35nf)
+match (dopt)-[doptdopt50f:HAS_CHARACTERISTICS]->(dopt50f)
+match (dopt)-[doptdopt50nf:HAS_CHARACTERISTICS]->(dopt50nf)
+match (dopt)-[doptdopt16f:HAS_CHARACTERISTICS]->(dopt16f)
+match (dopt)-[doptdopt16nf:HAS_CHARACTERISTICS]->(dopt16nf)
+
 //create (dopt)-[doptdopt20nf:HAS_CHARACTERISTICS]->(dopt20nf)
 //create (dopt)-[doptdopt35f:HAS_CHARACTERISTICS]->(dopt35f)
 //create (dopt)-[doptdopt35nf:HAS_CHARACTERISTICS]->(dopt35nf)
@@ -133,9 +143,7 @@ match (dopt)-[doptdopt16nf:HAS_CHARACTERISTICS]->(dopt16nf)
 //create (dopt)-[doptdopt16f:HAS_CHARACTERISTICS]->(dopt16f)
 //create (dopt)-[doptdopt16nf:HAS_CHARACTERISTICS]->(dopt16nf)
 
-RETURN doc,pag,isRestTrue,isAFalse,isATrue,unchTrue,unchTalse,unld,unlc,mored,actzero,fullem,whocl,dleave,chargepmon,dps50,vps50,sps50,dps25,sps25,dps10,vps10,sps10,tcondoc,adfullem,adwhocl,adunld,admored,adactzero,addleave,adunlc,eaddps50,eadvps50,eadsps50,tparpag,tparisRestTrue,tparchargepmon,tparisATrue,tparunchTalse,doptdopt20nf,doptdopt35f,doptdopt35nf,doptdopt50f,doptdopt50nf,doptdopt16f,doptdopt16nf
-
-
+return doptdopt20nf,doptdopt35f,doptdopt35nf,doptdopt50f,doptdopt50nf,doptdopt16f,doptdopt16nf,dopt,dopt20nf,dopt35f,dopt35nf,dopt50f,dopt50nf,dopt16f,dopt16nf
 
 //reloations between HAS_CHARACTERISTICS and CHARACTERISTICTS_DETAILS
 match (cn:CHARACTERISTICTS{rtpl_id:"4",type:"commercial_name"})
