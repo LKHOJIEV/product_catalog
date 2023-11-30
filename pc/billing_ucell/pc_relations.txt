@@ -135,3 +135,30 @@ match (dopt)-[doptdopt16nf:HAS_CHARACTERISTICS]->(dopt16nf)
 
 RETURN doc,pag,isRestTrue,isAFalse,isATrue,unchTrue,unchTalse,unld,unlc,mored,actzero,fullem,whocl,dleave,chargepmon,dps50,vps50,sps50,dps25,sps25,dps10,vps10,sps10,tcondoc,adfullem,adwhocl,adunld,admored,adactzero,addleave,adunlc,eaddps50,eadvps50,eadsps50,tparpag,tparisRestTrue,tparchargepmon,tparisATrue,tparunchTalse,doptdopt20nf,doptdopt35f,doptdopt35nf,doptdopt50f,doptdopt50nf,doptdopt16f,doptdopt16nf
 
+
+
+//reloations between HAS_CHARACTERISTICS and CHARACTERISTICTS_DETAILS
+match (cn:CHARACTERISTICTS{rtpl_id:"4",type:"commercial_name"})
+match (comname:CHARACTERISTICTS_DETAILS{ id: "cn35"}) 
+create (cn)-[:HAS_CHARACTERISTICS]->(comname)
+
+RETURN cn,comname;
+
+
+
+match (tpar:CHARACTERISTICTS{rtpl_id:"4",type:"tariff_params"})
+match (restart:CHARACTERISTICTS_DETAILS{ id: "rest35"})
+match (price:CHARACTERISTICTS_DETAILS{ id: "d35price"}) 
+create (tpar)-[:HAS_CHARACTERISTICS]->(price)
+create (tpar)-[:HAS_CHARACTERISTICS]->(restart)
+
+RETURN tpar,restart,price;
+
+
+match (cc:CHARACTERISTICTS{rtpl_id:"4",type:"call_credit"})
+match (callcre:CHARACTERISTICTS_DETAILS{rtpl_id: "4"})
+
+match (cc)-[cccallcre:HAS_CHARACTERISTICS]->(callcre) 
+//create (cc)-[cccallcre:HAS_CHARACTERISTICS]->(callcre) 
+
+RETURN cc,callcre,cccallcre;
