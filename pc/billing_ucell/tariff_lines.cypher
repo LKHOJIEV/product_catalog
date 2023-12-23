@@ -1,0 +1,22 @@
+
+create (:Category{id:"05",name:"AGMK",type:"Tariff Line"});
+create (:Category{id:"06",name:"NGMK",type:"Tariff Line"});
+create (:Category{id:"07",name:"Employee",type:"Tariff Line"});
+create (:Category{id:"08",name:"M2M",type:"Tariff Line"});
+create (:Category{id:"09",name:"PO PP",type:"Tariff Line"});
+create (:Category{id:"10",name:"Dealer",type:"Tariff Line"});
+create (:Category{id:"11",name:"Special",type:"Tariff Line"});
+create (:Category{id:"12",name:"SAMO",type:"Tariff Line"});
+create (:Category{id:"13",name:"Vatanparvar",type:"Tariff Line"});
+create (:Category{id:"14",name:"Close circle",type:"Tariff Line"});
+create (:Category{id:"15",name:"Business online",type:"Tariff Line"});
+create (:Category{id:"16",name:"Yoshlar",type:"Tariff Line"});
+create (:Category{id:"17",name:"New",type:"Tariff Line"});
+create (:Category{id:"18",name:"Smart Business",type:"Tariff Line"});
+create (:Category{id:"19",name:"TARIFF",type:"Tariff Line"});
+create (:Category{id:"20",name:"Mood",type:"Tariff Line"});
+create (:Category{id:"21",name:"Active",type:"Tariff Line"});
+create (:Category{id:"22",name:"Tantana",type:"Tariff Line"});
+create (:Category{id:"23",name:"Tourist",type:"Tariff Line"});
+create (:Category{id:"24",name:"Split",type:"Tariff Line"});
+create (:Category{id:"25",name:"month",type:"Tariff Line"});
