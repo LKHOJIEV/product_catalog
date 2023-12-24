@@ -1,11 +1,45 @@
 // 1.get dump of database
 ./neo4j-admin database dump neo4j --to-path=/users/user/data/neo4j_home_prod/import --expand-commands --overwrite-destination=true
 
-// 2.take recommended configuration parametrs for neo4j service 
-./neo4j-admin server memory-recommendation
-
-// 3.restore database from dump
+// 2.restore database from dump
 ./neo4j-admin database load --from-path=/users/user/data/neo4j_home_prod/import neo4j --overwrite-destination=true
+
+Option	Description	Default
+--additional-config=<file>
+
+Configuration file with additional configuration.
+
+--expand-commands
+
+Allow command expansion in config value evaluation.
+
+-h, --help
+
+Show this help message and exit.
+
+--overwrite-destination[=true|false]
+
+Overwrite any existing dump file in the destination folder.
+
+false
+
+--to-path=<path>
+
+Destination folder of a database dump.
+
+--to-stdout
+
+Use standard output as the destination for the database dump.
+
+--verbose
+
+Enable verbose output.
+
+
+
+
+// 3.take recommended configuration parametrs for neo4j service 
+./neo4j-admin server memory-recommendation
 
 // 4. execute quiety from file
 cat file.cypher | ./cypher-shell -u neo4j_user -p password_for_neo4j
