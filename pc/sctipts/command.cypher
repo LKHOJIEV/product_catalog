@@ -11,8 +11,24 @@
 cat file.cypher | ./cypher-shell -u neo4j_user -p password_for_neo4j
 
 
-// 5.
-
+// 5.connect to neo4j database via http and execute command cypher
+POST: http://{{host_ip_or_name}}:{{service_port}}/db/{{database_name_here}}/tx
+Content-Type: application/json
+Authorization: Basic bmVvNGo6cXdlcnR5dWk=
+Content-Length: 225
+body:{
+  "statements": [
+    {
+      "statement": "MATCH (n:Group) RETURN n",
+      "parameters": {},
+      "resultDataContents": [
+        "row",
+        "graph"
+      ],
+      "includeStats": true
+    }
+  ]
+}
 
 // 6.
 
