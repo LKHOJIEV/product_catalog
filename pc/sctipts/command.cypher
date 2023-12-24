@@ -1,5 +1,5 @@
 // 1.get dump of database
-./neo4j-admin database dump neo4j --to-path=/users/user/data/neo4j_home_prod/import
+./neo4j-admin database dump neo4j --to-path=/users/user/data/neo4j_home_prod/import --expand-commands --overwrite-destination=true
 
 // 2.take recommended configuration parametrs for neo4j service 
 ./neo4j-admin server memory-recommendation
