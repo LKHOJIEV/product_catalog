@@ -30,8 +30,8 @@ body:{
   ]
 }
 
-// 6.
-
+// 6. check by terminal comand if database is available via http 
+curl -i --user neo4j_user:neo4j_password http://host:port/
 
 // 7.
 
