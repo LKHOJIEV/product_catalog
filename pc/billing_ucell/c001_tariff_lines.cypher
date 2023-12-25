@@ -1,4 +1,7 @@
-
+create (:Category{id:"01",name:"Sof",type:"Tariff Line"});
+create (:Category{id:"02",name:"Doimiy",type:"Tariff Line"});
+create (:Category{id:"03",name:"Smartohone",type:"Tariff Line"});
+create (:Category{id:"04",name:"COSMO",type:"Tariff Line"});
 create (:Category{id:"05",name:"AGMK",type:"Tariff Line"});
 create (:Category{id:"06",name:"NGMK",type:"Tariff Line"});
 create (:Category{id:"07",name:"Employee",type:"Tariff Line"});
